@@ -1,17 +1,133 @@
-function calcularEdad(fechaNacimientoString) {
+function ej1() {
+    const nombre = document.getElementById("nombre").value;
+    const fechaString = document.getElementById("fecha").value;
+    const fecha = new Date(fechaString);
     const hoy = new Date();
-    const nacimiento = new Date(fechaNacimientoString);
-    const n = new Date('hola');
-    console.log('n: ' + n.toString());
-    let edad = 'Fecha invalida';
-    if(nacimiento.toString() === 'Invalid Date')
+    let edad = hoy.getFullYear() - fecha.getFullYear();
+    const mes = hoy.getMonth() - fecha.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < fecha.getDate())) 
     {
-        console.log('entró al if');
-        edad = hoy.getFullYear() - nacimiento.getFullYear();
-        const mes = hoy.getMonth() - nacimiento.getMonth();
-        if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
-            edad--;
+        edad--;
+    }
+    if(edad < 0)
+        {
+            console.log(`Nacimiento invalido`);
+            resultado.innerHTML = `Nacimiento invalido`;
+        }else
+            {
+                console.log(`Hola ${nombre}, tienes ${edad} años!`);
+                resultado.innerHTML = `Hola ${nombre}, tienes ${edad} años!`;
+            }
+}
+
+function ej2() {
+    const frutas = ["Manzana", "Banana", "Pera", "Naranja", "Durazno", "Frutilla", "Kiwi", "Mango", "Uva", "Sandía"];
+    console.log("Frutas disponibles:", frutas.join(", "));
+    const fruta = document.getElementById("fruta").value;
+    if (fruta === "") 
+    {
+        resultado.innerHTML = "No ingresaste ninguna fruta";
+    }else if (frutas.includes(fruta)) 
+    {
+        resultado.innerHTML = `Sí, tenemos ${fruta}!`;
+    } else {
+        resultado.innerHTML = `No, no tenemos ${fruta}!`;
+    }
+}
+
+function ej3() {
+    const A = 10 == "10";
+    const B = 10 === "10";
+    const C = typeof 10.6;
+    const D = true == 1;
+    resultado.innerHTML = `
+        10 == "10": ${A}<br>
+        10 === "10: ${B}<br>
+        typeof 10.6: ${C}<br>
+        true == 1: ${D}<br>
+    `;
+}
+
+function ej4() {
+    const ciudad = {
+        nombre: document.getElementById("nombre").value,
+        fechaFundacion: document.getElementById("fechaFundacion").value,
+        poblacion: document.getElementById("poblacion").value,
+        extension: document.getElementById("extension").value
+    };
+    let salida = "";
+    for (let clave in ciudad) {
+        salida += `${clave}: ${ciudad[clave]}<br>`;
+    }
+    resultado.innerHTML = salida;
+}
+
+function ej5() {
+    const lista = document.getElementById("numeros").value.split(",").map(n => Number(n)).filter(n => !isNaN(n));
+    const dobles = lista.map(n => n * 2);
+    resultado.innerHTML = `Original: ${lista.join(", ")}<br>Dobles: ${dobles.join(", ")}`;
+}
+
+function ej6() {
+    const base = parseInt(document.getElementById("baseTriangulos").value);
+    if (isNaN(base) || base <= 0) {
+        resultado.innerHTML = "Número inválido para la base del triángulo";
+    }else
+        {
+            let salida = "<p>Triángulo normal:</p>";
+            Array.from({ length: base }, (_, i) => salida += "*".repeat(i + 1) + "<br>");
+            salida += "<p>Triángulo invertido:</p>";
+            Array.from({ length: base }, (_, i) => salida += "*".repeat(base - i) + "<br>");
+            resultado.innerHTML = salida;
+        }
+}
+
+function ej7() {
+    const nombres = document.getElementById("nombres").value.split(",");
+    const filtrados = nombres.filter(n => n.startsWith("A")) + nombres.filter(n => n.startsWith("a"));
+    resultado.innerHTML = `Nombres con 'A': ${filtrados.join(", ")}`;
+}
+
+function ej8() {
+    const texto = document.getElementById("texto").value;
+    const buscar = document.getElementById("buscar").value;
+    const reemplazo = document.getElementById("reemplazo").value;
+    if (buscar == null) 
+    {
+        resultado.innerHTML = "Ingresá una palabra a reemplazar";
+    }else
+        {
+            let nuevoTexto = texto.replace(buscar, reemplazo);
+            resultado.innerHTML = `Texto con reemplazos: ${nuevoTexto}`;
+        }
+}
+
+function ej9() {
+    const texto = document.getElementById("texto").value;
+    const num = parseInt(document.getElementById("num").value);
+    if (isNaN(num) || num < 0) {
+        resultado.innerHTML = "Número invalido";
+        return;
+    }
+    resultado.innerHTML = texto.slice(0, num);
+}
+
+function ej10() {
+    const lista = document.getElementById("lista").value.split(",").filter(e => e !== "");
+    resultado.innerHTML = lista.join(" - ");
+}
+
+function ej11() {
+    const pedidos = document.getElementById("pedidos").value.split(",").filter(pedido => pedido.includes(":"));
+    let total = 0;
+    for(let i = 0; i < pedidos.length; i++)     
+    {
+        let pedido = pedidos[i].split(":");
+        let monto = parseFloat(pedido[1]);
+        if (!isNaN(monto)) 
+        {
+            total += monto;
         }
     }
-    return edad;
+    resultado.innerHTML = `Recaudación total: $${total.toFixed(2)}`;
 }
