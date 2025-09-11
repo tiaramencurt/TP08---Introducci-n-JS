@@ -92,14 +92,15 @@ function ej8() {
     const texto = document.getElementById("texto").value;
     const buscar = document.getElementById("buscar").value;
     const reemplazo = document.getElementById("reemplazo").value;
-    if (buscar == null) 
-    {
+    if (buscar == "") {
         resultado.innerHTML = "Ingresá una palabra a reemplazar";
-    }else
-        {
-            let nuevoTexto = texto.replace(buscar, reemplazo);
-            resultado.innerHTML = `Texto con reemplazos: ${nuevoTexto}`;
+    } else {
+        let nuevoTexto = texto;
+        while (nuevoTexto.includes(buscar)) {
+            nuevoTexto = nuevoTexto.replace(buscar, reemplazo);
         }
+        resultado.innerHTML = `Texto con reemplazos: ${nuevoTexto}`;
+    }
 }
 
 function ej9() {
