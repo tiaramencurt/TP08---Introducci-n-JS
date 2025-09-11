@@ -69,17 +69,29 @@ function ej5() {
 }
 
 function ej6() {
-    const base = parseInt(document.getElementById("baseTriangulos").value);
-    if (isNaN(base) || base <= 0) {
+    let base = parseInt(document.getElementById("baseTriangulos").value);
+    if (isNaN(base) || base <= 0)
+    {
         resultado.innerHTML = "Número inválido para la base del triángulo";
-    }else
-        {
-            let salida = "<p>Triángulo normal:</p>";
-            Array.from({ length: base }, (_, i) => salida += "*".repeat(i + 1) + "<br>");
-            salida += "<p>Triángulo invertido:</p>";
-            Array.from({ length: base }, (_, i) => salida += "*".repeat(base - i) + "<br>");
-            resultado.innerHTML = salida;
+    } else
+    {
+        let salida = "<p>Triángulo 1:</p>";
+        for (let i = 1; i <= base; i++) {
+            salida += "*".repeat(i) + "<br>";
         }
+        salida += "<p>Triángulo 2:</p>";
+        if(base%2 == 0)
+            {
+                base = base + 1;
+                salida += "<p>(Se suma 1 a la base porque no se puede con una base par)</p>";
+            }
+        for (let i = 1; i <= base; i = i + 2) {
+            let guiones = "-".repeat((base - i)/2);
+            let asteriscos = "*".repeat(i);
+            salida += guiones + asteriscos + guiones + "<br>";
+        }
+        resultado.innerHTML = salida;
+    }
 }
 
 function ej7() {
