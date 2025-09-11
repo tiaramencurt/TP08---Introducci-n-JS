@@ -1,6 +1,10 @@
 function ej1() {
-    const nombre = document.getElementById("nombre").value;
+    let nombre = document.getElementById("nombre").value;
     const fechaString = document.getElementById("fecha").value;
+    if(nombre == "")
+        {
+            nombre = "Nadie";
+        }
     const fecha = new Date(fechaString);
     const hoy = new Date();
     let edad = hoy.getFullYear() - fecha.getFullYear();
