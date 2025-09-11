@@ -124,13 +124,14 @@ function ej9() {
     const num = parseInt(document.getElementById("num").value);
     if (isNaN(num) || num < 0) {
         resultado.innerHTML = "Número invalido";
-        return;
-    }
-    resultado.innerHTML = texto.slice(0, num);
+    }else
+        {
+            resultado.innerHTML = texto.slice(0, num);
+        }
 }
 
 function ej10() {
-    const lista = document.getElementById("lista").value.split(",").filter(e => e !== "");
+    const lista = document.getElementById("lista").value.split(",").filter(i => i !== "");
     resultado.innerHTML = lista.join(" - ");
 }
 
@@ -146,5 +147,5 @@ function ej11() {
             total += monto;
         }
     }
-    resultado.innerHTML = `Recaudación total: $${total.toFixed(2)}`;
+    resultado.innerHTML = `Recaudación total: $${total}`;
 }
