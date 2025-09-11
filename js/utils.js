@@ -21,13 +21,13 @@ function ej1() {
 }
 
 function ej2() {
-    const frutas = ["Manzana", "Banana", "Pera", "Naranja", "Durazno", "Frutilla", "Kiwi", "Mango", "Uva", "Sandía"];
+    const frutas = ["manzana", "banana", "pera", "naranja", "durazno", "frutilla", "kiwi", "mango", "uva", "sandía"];
     console.log("Frutas disponibles:", frutas.join(", "));
     const fruta = document.getElementById("fruta").value;
     if (fruta === "") 
     {
         resultado.innerHTML = "No ingresaste ninguna fruta";
-    }else if (frutas.includes(fruta)) 
+    }else if (frutas.includes(fruta.toLowerCase())) 
     {
         resultado.innerHTML = `Sí, tenemos ${fruta}!`;
     } else {
