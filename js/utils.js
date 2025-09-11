@@ -42,7 +42,7 @@ function ej3() {
     const D = true == 1;
     resultado.innerHTML = `
         10 == "10": ${A}<br>
-        10 === "10: ${B}<br>
+        10 === "10": ${B}<br>
         typeof 10.6: ${C}<br>
         true == 1: ${D}<br>
     `;
