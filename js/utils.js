@@ -13,7 +13,7 @@ function ej1() {
     {
         edad--;
     }
-    if(edad < 0)
+    if(edad < 0 || isNaN(edad))
         {
             console.log(`Nacimiento invalido`);
             resultado.innerHTML = `Nacimiento invalido`;
