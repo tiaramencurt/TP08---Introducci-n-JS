@@ -96,7 +96,7 @@ function ej6() {
 
 function ej7() {
     const nombres = document.getElementById("nombres").value.split(",");
-    const filtrados = nombres.filter(n => n.startsWith("A")) + nombres.filter(n => n.startsWith("a"));
+    const filtrados = nombres.filter(n => n.startsWith("A")).concat(nombres.filter(n => n.startsWith("a")));
     resultado.innerHTML = `Nombres con 'A': ${filtrados.join(", ")}`;
 }
 
